@@ -20,7 +20,7 @@ public class RPN {
     public int sum(){
         for (int i=0;i<sentence.length();i++){
             if(sentence.charAt(i)=='+'){
-                return 2+3;
+                return 2+3; // Stack[i] + Stack [i-1]
             }
         }
 
