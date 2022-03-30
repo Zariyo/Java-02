@@ -23,6 +23,14 @@ public class RPNTest {
         assertEquals("2".charAt(0), sut.showElems());
     }
 
-    RPN nowy = new RPN("2 3 +");
-    nowy.oblicz()
+    @Test
+    public void testAddition(){
+        // Arrange
+        // sut = System Under Test
+        RPN sut = new RPN("12 10 +");
+        // Act
+        // Assert
+        assertEquals(new String[]{"12"}, sut.sum());
+    }
+
 }
