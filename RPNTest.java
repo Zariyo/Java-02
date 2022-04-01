@@ -13,24 +13,15 @@ public class RPNTest {
         // Assert
         assertEquals("2 3 +", sut.show());
     }
-    @Test
-    public void testShowElems(){
-        // Arrange
-        // sut = System Under Test
-        RPN sut = new RPN("2 3 +");
-        // Act
-        // Assert
-        assertEquals("2".charAt(0), sut.showElems());
-    }
 
     @Test
     public void testAddition(){
         // Arrange
         // sut = System Under Test
-        RPN sut = new RPN("12 10 +");
+        RPN sut = new RPN("1 2 /");
         // Act
         // Assert
-        assertEquals(new String[]{"12"}, sut.sum());
+        assertEquals(0.5, sut.calculate(), 0.01);
     }
 
 }
