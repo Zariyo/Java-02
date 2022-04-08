@@ -1,5 +1,6 @@
 import java.lang.Math;
 import org.junit.*;
+import stack.Stack;
 
 import static org.junit.Assert.*;
 

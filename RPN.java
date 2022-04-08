@@ -1,12 +1,11 @@
 import java.util.Objects;
+import stack.Stack;
+import Operations.Operations;
+import Operations.Sum;
 
 public class RPN {
-
-    public interface Operation {
-        private Stack compute(Stack numbers) {
-            return null;
-        }
-    }
+    private String sentence;
+    private Operations[] operations;
 
     public static boolean isNumeric(String str) {
         try {
@@ -17,29 +16,9 @@ public class RPN {
         }
     }
 
-
-    public class Sum implements Operation {
-        private Stack compute(Stack numbers){
-            return numbers;
-        }
-    }
-
-    private class Substraction implements Operation {
-
-    }
-
-    private class Division implements Operation {
-
-    }
-
-    private class Multiplication implements Operation {
-
-    }
-
-    private String sentence;
-
-    public RPN(String sent){
-        sentence = sent;
+    public RPN(String sent, Operations[] ops){
+        this.sentence = sent;
+        this.operations = ops;
     }
 
     public String show(){
@@ -54,19 +33,12 @@ public class RPN {
                 numbers.push(Integer.parseInt(sentenceArr[i]));
             }
             else{
-                Operation compute = new Sum();
-                compute.compute(numbers)
+                Operations compute = new Sum();
+                if(compute.compute(sentenceArr[i], numbers)){
+                    break;
+                }
             }
         }
-        return -1;
-//            else if(sentence.charAt(i)=='-'){
-//                return 2-3;
-//            }
-//            else {
-//                numbers.push(sentence.charAt(i)-39);
-//            }
-//
-//        }
-//        return 0;
+        return numbers.pop();
     }
 }
