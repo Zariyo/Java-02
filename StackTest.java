@@ -34,7 +34,7 @@ public class StackTest {
         sut.push(10);
         sut.push(2);
         // Assert
-        assertEquals("x.pop()",2, sut.pop());
+        assertEquals("x.pop()",2, sut.pop(), 0.0001);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class StackTest {
         sut.push(10);
         sut.push(2);
         // Assert
-        assertEquals("x.peek()",2, sut.peek());
+        assertEquals("x.peek()",2, sut.peek(), 0.0001);
     }
 
 
