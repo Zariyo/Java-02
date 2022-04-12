@@ -1,11 +1,11 @@
 import java.util.Objects;
+
 import stack.Stack;
 import Operations.Operations;
-import Operations.Sum;
 
 public class RPN {
-    private String sentence;
-    private Operations[] operations;
+    private final String sentence;
+    private final Operations[] operations;
 
     public static boolean isNumeric(String str) {
         try {
@@ -28,15 +28,17 @@ public class RPN {
     public double calculate(){
         Stack numbers = new Stack(sentence.length());
         String[] sentenceArr = sentence.split(" ", -1);
-        for (int i=0;i<sentence.length();i++) {
+        for (int i=0;i<sentenceArr.length;i++) {
             if (isNumeric(sentenceArr[i])) {
                 numbers.push(Integer.parseInt(sentenceArr[i]));
             }
             else{
-                Operations compute = new Sum();
-                if(compute.compute(sentenceArr[i], numbers)){
-                    break;
+                for (int j=0;j<operations.length; j++){
+                    if(this.operations[j].compute(sentenceArr[i], numbers)){
+                        break;
+                    }
                 }
+
             }
         }
         return numbers.pop();
